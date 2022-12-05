@@ -1,25 +1,26 @@
-
+import { useAppDispatch } from '../hook'
+import { removeNote, changeNote } from '../store/noteSlice'
 interface NotesItemPropsType {
-    id: string | undefined
-    text: string | undefined
-    disabled: boolean | undefined
-    removeNote: (id: string | undefined) => void
-    changeNote: (id: string | undefined) => void
+    id: string
+    text: string
+    disabled: boolean
 }
 
-const NotesItem: React.FC<NotesItemPropsType> = ({id, text, disabled, removeNote, changeNote}) => {
+const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled}) => {
+    const dispatch = useAppDispatch()
+
     return (
         <li>
             <input placeholder='note' defaultValue={text} disabled={disabled}/>
-            <button onClick={() => changeNote(id)}>
+            <button onClick={() => dispatch(changeNote(id))}>
             {disabled
                 ? 'change'
                 : 'save'
             }
             </button>
-            <button onClick={() => removeNote(id)}>delete</button>
+            <button onClick={() => dispatch(removeNote(id))}>delete</button>
         </li>
     )
 }
 
-export default NotesItem
+export default NoteItem

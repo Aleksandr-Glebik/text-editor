@@ -3,56 +3,26 @@ import './App.scss'
 import NotesList from './components/NotesList'
 import InputField from './components/InputField'
 
-export type DisabledType = false | true | undefined
-export interface NoteType {
-  id: string | undefined
-  text: string | undefined
-  disabled: DisabledType
-}
+import { useAppDispatch } from './hook'
+import { addNote } from './store/noteSlice'
 
 function App() {
   const [text, setText] = useState<string>('')
-  const [notes, setNotes] = useState<NoteType[]>([])
 
-  const addNote = () => {
-    if (text.trim().length) {
-      setNotes([
-        ...notes,
-        {
-          id: new Date().toISOString(),
-          text,
-          disabled: true
-        }
-      ])
-      setText('')
-    }
-  }
+  const dispatch = useAppDispatch()
 
-  const removeNote = (noteId: string | undefined) => {
-    setNotes(notes.filter(note => note.id !== noteId))
-  }
-
-  const changeNote = (noteId: string | undefined) => {
-    setNotes(notes.map( note => {
-        if (note.id !== noteId) return note;
-        return {
-              ...note,
-              disabled: !note.disabled
-        }
-      }) as NoteType[]
-    )
+  const addNewNote = () => {
+    dispatch(addNote(text))
+    setText('')
   }
 
   return (
     <div className="App">
       <InputField text={text}
                   setText={setText}
-                  addNote={addNote}
+                  addNote={addNewNote}
       />
-      <NotesList notes={notes}
-                 removeNote={removeNote}
-                 changeNote={changeNote}
-      />
+      <NotesList />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 
 interface InputFieldPropsType {
-    text: string | undefined
+    text: string
     setText: (text: string) => void
     addNote: () => void
 }
