@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.scss'
 
 // type DisabledType = 'disabled' | '' | undefined
@@ -14,8 +14,6 @@ function App() {
   const [text, setText] = useState<string>('')
   const [notes, setNotes] = useState<NoteType[]>([])
 
-  // const [isDisabled, setIsDisabled] = useState<DisabledType>(false);
-
   const addNote = () => {
     if (text.trim().length) {
       setNotes([
@@ -30,19 +28,20 @@ function App() {
     }
   }
 
+  useEffect( () => {
+
+  }, [notes])
+
   const removeNote = (noteId: string | undefined) => {
     setNotes(notes.filter(note => note.id !== noteId))
   }
 
   const changeNote = (noteId: string | undefined) => {
     setNotes(notes.map( note => {
-        if (note.id !== noteId) {
-          return note
-        } else if (note.id == noteId) {
-          return {
-            ...note,
-            disabled: false
-          }
+        if (note.id !== noteId) return note;
+        return {
+              ...note,
+              disabled: !note.disabled
         }
       }) as NoteType[]
     )
@@ -58,8 +57,13 @@ function App() {
         {
           notes.map( note => (
             <li key={note.id}>
-              <input placeholder='note' defaultValue={note.text} disabled={true}/>
-              <button onClick={() => changeNote(note.id)}>change</button>
+              <input placeholder='note' defaultValue={note.text} disabled={note.disabled}/>
+              <button onClick={() => changeNote(note.id)}>
+                {note.disabled
+                 ? 'change'
+                 : 'save'
+                }
+              </button>
               <button onClick={() => removeNote(note.id)}>delete</button>
             </li>
           ))
