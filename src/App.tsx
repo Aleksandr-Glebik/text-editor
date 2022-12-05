@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.scss'
+import NotesList from './components/NotesList'
+import InputField from './components/InputField'
 
-// type DisabledType = 'disabled' | '' | undefined
-type DisabledType = false | true | undefined
-
-interface NoteType {
+export type DisabledType = false | true | undefined
+export interface NoteType {
   id: string | undefined
   text: string | undefined
   disabled: DisabledType
@@ -28,10 +28,6 @@ function App() {
     }
   }
 
-  useEffect( () => {
-
-  }, [notes])
-
   const removeNote = (noteId: string | undefined) => {
     setNotes(notes.filter(note => note.id !== noteId))
   }
@@ -49,26 +45,14 @@ function App() {
 
   return (
     <div className="App">
-      <label>
-        <input placeholder='new note' value={text} onChange={e => setText(e.target.value)} />
-        <button onClick={addNote}>add note</button>
-      </label>
-      <ul>
-        {
-          notes.map( note => (
-            <li key={note.id}>
-              <input placeholder='note' defaultValue={note.text} disabled={note.disabled}/>
-              <button onClick={() => changeNote(note.id)}>
-                {note.disabled
-                 ? 'change'
-                 : 'save'
-                }
-              </button>
-              <button onClick={() => removeNote(note.id)}>delete</button>
-            </li>
-          ))
-        }
-      </ul>
+      <InputField text={text}
+                  setText={setText}
+                  addNote={addNote}
+      />
+      <NotesList notes={notes}
+                 removeNote={removeNote}
+                 changeNote={changeNote}
+      />
     </div>
   )
 }
