@@ -6,6 +6,7 @@ type Note = {
   id: string
   text: string
   disabled: DisabledType
+  tag: string
 }
 
 type NotesState = {
@@ -24,7 +25,13 @@ const noteSlice = createSlice({
             state.notes.push({
                     id: new Date().toISOString(),
                     text: action.payload,
-                    disabled: true
+                    disabled: true,
+                    tag: action.payload.split(' ').map( el => {
+                        if (el.startsWith('#')) {
+                            return el
+                        }
+                        return ''
+                    }).join('')
                 })
         },
         removeNote(state, action: PayloadAction<string>) {
