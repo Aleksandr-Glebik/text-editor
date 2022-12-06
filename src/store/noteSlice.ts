@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getTagFromString } from '../utils/getTagFromString'
 
 type DisabledType = false | true
 
@@ -26,12 +27,13 @@ const noteSlice = createSlice({
                     id: new Date().toISOString(),
                     text: action.payload,
                     disabled: true,
-                    tag: action.payload.split(' ').map( el => {
-                        if (el.startsWith('#')) {
-                            return el
-                        }
-                        return ''
-                    }).join('')
+                    tag: getTagFromString(action.payload)
+                    // tag: action.payload.split(' ').map( el => {
+                    //     if (el.startsWith('#')) {
+                    //         return el
+                    //     }
+                    //     return ''
+                    // }).join('')
                 })
         },
         removeNote(state, action: PayloadAction<string>) {
