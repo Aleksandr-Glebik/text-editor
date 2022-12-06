@@ -5,7 +5,7 @@ const NotesList: React.FC = ()  => {
     const notes = useAppSelector(state => state.notes.notes)
 
     return (
-        <ul>
+        <ul style={{paddingLeft: '0px'}}>
             {
              notes.map( (note) => (
               <NoteItem key={note.id}

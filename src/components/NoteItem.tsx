@@ -20,8 +20,8 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     }, [value])
 
     return (
-        <li>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+        <li style={{listStyleType: 'none'}}>
+            <div style={{display: 'flex', justifyContent: 'center', border: '1px solid black', width: '300px', margin: '1rem auto'}}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'start', alignItems: 'start'}}>
                     <input placeholder='note'
                         disabled={disabled}
