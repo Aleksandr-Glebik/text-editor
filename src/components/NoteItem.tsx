@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAppDispatch } from '../hook'
-import { removeNote, changeNote } from '../store/noteSlice'
+import { removeNote, changeNote, setNewValue } from '../store/noteSlice'
 import { getTagFromString } from '../utils/getTagFromString'
 interface NotesItemPropsType {
     id: string
@@ -15,9 +15,9 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     const tagRef = useRef(tag)
 
     useEffect( () => {
-        setValue(value)
+        dispatch(setNewValue({id, value}))
         tagRef.current = getTagFromString(value)
-    }, [value])
+    }, [value, dispatch, id])
 
     return (
         <li style={{listStyleType: 'none'}}>

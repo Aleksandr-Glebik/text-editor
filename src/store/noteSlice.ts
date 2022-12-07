@@ -28,12 +28,6 @@ const noteSlice = createSlice({
                     text: action.payload,
                     disabled: true,
                     tag: getTagFromString(action.payload)
-                    // tag: action.payload.split(' ').map( el => {
-                    //     if (el.startsWith('#')) {
-                    //         return el
-                    //     }
-                    //     return ''
-                    // }).join('')
                 })
         },
         removeNote(state, action: PayloadAction<string>) {
@@ -45,10 +39,16 @@ const noteSlice = createSlice({
                 changedNote.disabled = !changedNote.disabled
             }
         },
-        filterNotes(state, action) {}
+        setNewValue(state, action: PayloadAction<{id: string, value: string}>) {
+            const changedNote = state.notes.find(note => note.id === action.payload.id)
+            if (changedNote) {
+                changedNote.text = action.payload.value
+                changedNote.tag = getTagFromString(action.payload.value)
+            }
+        }
     }
 })
 
-export const {addNote, removeNote, changeNote, filterNotes} = noteSlice.actions
+export const {addNote, removeNote, changeNote, setNewValue} = noteSlice.actions
 
 export default noteSlice.reducer
