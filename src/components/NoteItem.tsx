@@ -22,7 +22,7 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     }, [value, dispatch, id])
 
     useEffect( () => {
-        if (!disabled) {
+    if (!disabled) {
             inputRef?.current?.focus?.()
         }
     }, [disabled])

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type Tag = {
+export type Tag = {
   id: string
   text: string
 }
 
-type TagsState = {
+export type TagsState = {
    tags: Tag[]
 }
 
@@ -26,9 +26,15 @@ const tagSlice = createSlice({
         removeTag(state, action: PayloadAction<string>) {
             state.tags = state.tags.filter(tag => tag.id !== action.payload)
         },
+        concatTags(state, action: PayloadAction<Tag[]>) {
+            let newArr = action.payload
+            for (let i = 0; i < newArr.length; i++) {
+                state.tags = state.tags.concat(newArr[i])
+            }
+        }
     }
 })
 
-export const {addTag, removeTag } = tagSlice.actions
+export const {addTag, removeTag, concatTags } = tagSlice.actions
 
 export default tagSlice.reducer

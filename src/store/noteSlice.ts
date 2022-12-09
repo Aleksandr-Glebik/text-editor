@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getTagFromString } from '../utils/getTagFromString'
 
-type DisabledType = false | true
+export type DisabledType = false | true
 
-type Note = {
+export type Note = {
   id: string
   text: string
   disabled: DisabledType
   tag: string
 }
 
-type NotesState = {
+export type NotesState = {
    notes: Note[]
 }
 

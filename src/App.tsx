@@ -22,7 +22,7 @@ function App() {
   }
 
   const addNewTag = () => {
-    if (text.trim().length) {
+    if (tag.trim().length) {
       dispatch(addTag(tag))
       setTag('')
     }
