@@ -19,7 +19,7 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     useEffect( () => {
         dispatch(setNewValue({id, value}))
         tagRef.current = getTagFromString(value)
-    }, [value, dispatch, id])
+    }, [disabled, dispatch, id])
 
     useEffect( () => {
     if (!disabled) {
