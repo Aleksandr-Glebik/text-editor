@@ -15,13 +15,17 @@ function App() {
   const dispatch = useAppDispatch()
 
   const addNewNote = () => {
-    dispatch(addNote(text))
-    setText('')
+    if (text.trim().length) {
+      dispatch(addNote(text))
+      setText('')
+    }
   }
 
   const addNewTag = () => {
-    dispatch(addTag(tag))
-    setTag('')
+    if (text.trim().length) {
+      dispatch(addTag(tag))
+      setTag('')
+    }
   }
 
   return (

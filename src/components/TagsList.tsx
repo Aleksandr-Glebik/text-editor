@@ -4,13 +4,7 @@ import TagItem from './TagItem'
 
 const TagsList: React.FC = ()  => {
     const tags = useAppSelector(state => state.tags.tags)
-    // const notes = useAppSelector(state => state.notes.notes)
-
-
-    // useEffect( () => {
-    //     console.log('notes', notes);
-    // }, [notes])
-
+    console.log('tags', tags);
 
     return (
         <ul style={{paddingLeft: '0px'}}>

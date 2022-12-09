@@ -14,10 +14,18 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     const [value, setValue] = useState(text)
     const tagRef = useRef(tag)
 
+    const inputRef = useRef<HTMLInputElement>(null)
+
     useEffect( () => {
         dispatch(setNewValue({id, value}))
         tagRef.current = getTagFromString(value)
     }, [value, dispatch, id])
+
+    useEffect( () => {
+        if (!disabled) {
+            inputRef?.current?.focus?.()
+        }
+    }, [disabled])
 
     return (
         <li style={{listStyleType: 'none'}}>
@@ -27,6 +35,7 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
                         disabled={disabled}
                         value={value}
                         onChange={e => setValue(e.target.value)}
+                        ref={inputRef}
                     />
                     {tagRef.current && <p>tag: {tagRef.current}</p>}
                 </div>
