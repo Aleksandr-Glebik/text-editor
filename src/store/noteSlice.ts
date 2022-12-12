@@ -8,6 +8,7 @@ export type Note = {
   text: string
   disabled: DisabledType
   tag: string
+  filtered: boolean
 }
 
 export type NotesState = {
@@ -27,7 +28,8 @@ const noteSlice = createSlice({
                     id: new Date().toISOString(),
                     text: action.payload,
                     disabled: true,
-                    tag: getTagFromString(action.payload)
+                    tag: getTagFromString(action.payload),
+                    filtered: false
                 })
         },
         removeNote(state, action: PayloadAction<string>) {
@@ -45,10 +47,26 @@ const noteSlice = createSlice({
                 changedNote.text = action.payload.value
                 changedNote.tag = getTagFromString(action.payload.value)
             }
+        },
+        filterNotes(state, action: PayloadAction<string>) {
+            state.notes = state.notes.map(note => {
+                if (note.tag.slice(1) !== action.payload) {
+                    note.filtered = true
+                } else {
+                    note.filtered = false
+                }
+                return note
+            })
+        },
+        removeFilter(state) {
+            state.notes = state.notes.map(note => {
+                note.filtered = false
+                return note
+            })
         }
     }
 })
 
-export const {addNote, removeNote, changeNote, setNewValue} = noteSlice.actions
+export const { addNote, removeNote, changeNote, setNewValue, filterNotes, removeFilter } = noteSlice.actions
 
 export default noteSlice.reducer

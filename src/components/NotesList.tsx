@@ -7,10 +7,12 @@ const NotesList: React.FC = ()  => {
     return (
         <ul style={{paddingLeft: '0px'}}>
             {
-             notes.map( (note) => (
-              <NoteItem key={note.id}
-                        {...note}
-              />))
+             notes.map( (note) => {
+                if (note.filtered === false) {
+                    return <NoteItem key={note.id} {...note} />
+                }
+                return null
+             })
             }
         </ul>
     )

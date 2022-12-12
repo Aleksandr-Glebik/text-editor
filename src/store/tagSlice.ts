@@ -35,6 +35,6 @@ const tagSlice = createSlice({
     }
 })
 
-export const {addTag, removeTag, concatTags } = tagSlice.actions
+export const { addTag, removeTag, concatTags } = tagSlice.actions
 
 export default tagSlice.reducer
