@@ -1,11 +1,12 @@
-import { useAppSelector } from '../hook'
-import NoteItem from './NoteItem'
+import { useAppSelector } from '../../hook'
+import NoteItem from '../NoteItem'
+import './NoteList.scss'
 
 const NotesList: React.FC = ()  => {
     const notes = useAppSelector(state => state.notes.notes)
     // console.log('notes', notes);
     return (
-        <ul style={{paddingLeft: '0px'}}>
+        <ul className='note-list'>
             {
              notes.map( (note) => {
                 if (note.filtered === false) {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
-import NotesList from './components/NotesList'
+import NotesList from './components/NoteList/NotesList'
 import InputField from './components/InputField/InputField'
 
 import { useAppDispatch } from './hook'
