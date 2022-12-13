@@ -8,6 +8,8 @@ import { addNote } from './store/noteSlice'
 import { addTag } from './store/tagSlice'
 import TagsList from './components/TagsList'
 
+import Header from './components/Header/Header'
+
 function App() {
   const [text, setText] = useState<string>('')
   const [tag, setTag] = useState<string>('')
@@ -29,7 +31,8 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="wrapper">
+      <Header />
       <div>
         <InputField text={text}
                     setText={setText}
