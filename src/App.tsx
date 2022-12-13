@@ -9,6 +9,7 @@ import { addTag } from './store/tagSlice'
 import TagsList from './components/TagsList'
 
 import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 
 function App() {
   const [text, setText] = useState<string>('')
@@ -33,24 +34,26 @@ function App() {
   return (
     <div className="wrapper">
       <Header />
-      <div>
-        <InputField text={text}
-                    setText={setText}
-                    addNote={addNewNote}
-                    title={'Add new note'}
-                    placeholder={'new note'}
-        />
-        <NotesList />
-      </div>
-      <div>
-        <InputField text={tag}
-                    setText={setTag}
-                    addNote={addNewTag}
-                    title={'Add new tag'}
-                    placeholder={'new tag'}
-        />
-        <TagsList />
-      </div>
+      <Main>
+        <div className='main-notes'>
+          <InputField text={text}
+                      setText={setText}
+                      addNote={addNewNote}
+                      title={'Add new note'}
+                      placeholder={'new note'}
+          />
+          <NotesList />
+        </div>
+        <div className='main-tags'>
+          <InputField text={tag}
+                      setText={setTag}
+                      addNote={addNewTag}
+                      title={'Add new tag'}
+                      placeholder={'new tag'}
+          />
+          <TagsList />
+        </div>
+      </Main>
     </div>
   )
 }

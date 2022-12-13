@@ -8,7 +8,7 @@ library.add(
     faCheckDouble,
 )
 
-const Header = () => {
+const Header: React.FC = () => {
     return (
         <header className='header'>
             <FontAwesomeIcon icon={faCheckDouble} className='header-icon'/>
