@@ -1,8 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import noteReducer from './noteSlice'
 import tagReducer from './tagSlice'
+import { NotesState } from "./noteSlice";
+import { TagsState } from "./tagSlice";
 
-const saveToLocalStorage = (state: any) => {
+type stateType = {
+    notes: NotesState
+    tags: TagsState
+}
+
+const saveToLocalStorage = (state: stateType) => {
     try {
         const initialState = JSON.stringify(state)
         localStorage.setItem('state', initialState)
