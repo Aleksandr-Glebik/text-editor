@@ -29,10 +29,11 @@
 
 .container-input {
     width: 80%;
-    height: 2rem;
+    height: 2.5rem;
     padding: 1rem 1rem 1rem 2rem;
     border: 1px solid #5fffca;
     border-radius: 0.5rem;
+    font-size: 1rem;
 }
 
 .container-input:focus {
@@ -50,11 +51,12 @@
 
 .container-btn {
     width: 20%;
-    height: 2rem;
+    height: 2.5rem;
     border: 1px solid #5fffca;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.45s ease-in-out;
+    font-size: 1rem;
 }
 
 .container-btn:hover {

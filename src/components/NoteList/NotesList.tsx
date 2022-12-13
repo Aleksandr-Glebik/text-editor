@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../hook'
-import NoteItem from '../NoteItem'
-import './NoteList.scss'
+import NoteItem from '../NoteItem/NoteItem'
+import './noteList.scss'
 
 const NotesList: React.FC = ()  => {
     const notes = useAppSelector(state => state.notes.notes)
