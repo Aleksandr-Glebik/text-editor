@@ -11,8 +11,8 @@ library.add(
 const Header: React.FC = () => {
     return (
         <header className='header'>
-            <FontAwesomeIcon icon={faCheckDouble} className='icon'/>
-            <h1 className='title'>Todo List</h1>
+            <FontAwesomeIcon icon={faCheckDouble} className='header-logo'/>
+            <h1 className='header-title'>Todo List</h1>
         </header>
     )
 }

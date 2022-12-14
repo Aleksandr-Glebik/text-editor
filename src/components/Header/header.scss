@@ -9,7 +9,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    .title {
+    &-title {
         padding: 0.5rem;
         font-size: 2rem;
         font-style: italic;
@@ -17,7 +17,7 @@
         color: #0000ff;
     }
 
-    .icon {
+    &-logo {
         font-size: 2.5rem;
         padding: 0.5rem;
         color: #ff4500;

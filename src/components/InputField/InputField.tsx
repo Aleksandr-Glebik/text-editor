@@ -19,17 +19,17 @@ interface InputFieldPropsType {
 const InputField: React.FC<InputFieldPropsType> = ({ text, setText, addNote, title, placeholder}) => {
     return (
       <label>
-        <h2 className='title'>{title}</h2>
-        <div className='container-input-field'>
-          <FontAwesomeIcon icon={faPencil} className='input-field-icon'/>
+        <h2 className='input-field__title'>{title}</h2>
+        <div className='input-field__content'>
+          <FontAwesomeIcon icon={faPencil} className='input-field__icon'/>
           <input placeholder={placeholder}
                 value={text}
                 onChange={e => setText(e.target.value)}
-                className='input input-field'
+                className='input input-field__input'
           />
           <button
             onClick={addNote}
-            className='btn input-field-btn'
+            className='btn input-field__btn'
           >
             add
           </button>

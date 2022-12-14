@@ -23,14 +23,14 @@ const TagItem: React.FC<TagsItemPropsType> = ({id, text}) => {
         <li className='item-tag'>
                 <span
                  onClick={ (e) => dispatch(filterNotes(text))}
-                 className='item-tag-text'
+                 className='item-tag__text'
                 >
                     #{text}
                 </span>
                 <FontAwesomeIcon
                   icon={faCircleXmark}
                   onClick={() => dispatch(removeTag(id))}
-                  className='item-tag-icon'
+                  className='item-tag__icon'
                 />
         </li>
     )

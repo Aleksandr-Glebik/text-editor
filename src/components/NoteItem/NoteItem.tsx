@@ -39,26 +39,26 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
 
     return (
         <li className='item'>
-                <div className='container-action'>
+                <div className='item__content'>
                     <input placeholder='note'
                         disabled={disabled}
                         value={value}
                         onChange={e => setValue(e.target.value)}
                         ref={inputRef}
-                        className='input input-action'
+                        className='input item__content-input'
                     />
-                    {value && <div className='container-content'>
+                    {value && <div className='item__content-container'>
                                 <FontAwesomeIcon
                                   icon={faClipboardList}
-                                  className='icon'
+                                  className='item__content-icon'
                                 />
-                                <p className='text'>
+                                <p className='item__content-text'>
                                     {value}
                                 </p>
-                                {tagRef.current && <span className='tag'>{tagRef.current}</span>}
+                                {tagRef.current && <span   className='item__content-tag'>{tagRef.current}</span>}
                               </div>}
                 </div>
-                <div className='container-btns'>
+                <div className='item__action'>
                     <button
                       onClick={() => dispatch(changeNote(id))}
                       className='btn btn-change'
@@ -75,7 +75,6 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
                       delete
                     </button>
                 </div>
-
         </li>
     )
 }

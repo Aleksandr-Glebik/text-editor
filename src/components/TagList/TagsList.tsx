@@ -20,11 +20,11 @@ const TagsList: React.FC = ()  => {
     }, [tags, notes, dispatch])
 
     return (
-        <div className='container'>
-            <p className='text'>
+        <div className='tag-list__container'>
+            <p className='tag-list__text'>
                 Кликните по тегу для фильтрации списка заметок
             </p>
-            <ul className='list'>
+            <ul className='tag-list__list'>
                 {
                 tags.map( (tag) => (
                 <TagItem key={tag.id}
