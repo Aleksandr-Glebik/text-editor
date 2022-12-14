@@ -41,6 +41,7 @@ function App() {
                       addNote={addNewNote}
                       title={'Add new note'}
                       placeholder={'new note'}
+                      onKeyDown={event => {}}
           />
           <NotesList />
         </div>
@@ -50,6 +51,7 @@ function App() {
                       addNote={addNewTag}
                       title={'Add new tag'}
                       placeholder={'new tag'}
+                      onKeyDown={event => console.log(event)}
           />
           <TagsList />
         </div>
