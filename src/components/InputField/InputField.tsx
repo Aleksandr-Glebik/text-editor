@@ -20,16 +20,16 @@ const InputField: React.FC<InputFieldPropsType> = ({ text, setText, addNote, tit
     return (
       <label>
         <h2 className='title'>{title}</h2>
-        <div className='container'>
-          <FontAwesomeIcon icon={faPencil} className='container-icon'/>
+        <div className='container-input-field'>
+          <FontAwesomeIcon icon={faPencil} className='input-field-icon'/>
           <input placeholder={placeholder}
                 value={text}
                 onChange={e => setText(e.target.value)}
-                className='input container-input'
+                className='input input-field'
           />
           <button
             onClick={addNote}
-            className='btn container-btn'
+            className='btn input-field-btn'
           >
             add
           </button>

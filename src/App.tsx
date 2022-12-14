@@ -6,7 +6,7 @@ import InputField from './components/InputField/InputField'
 import { useAppDispatch } from './hook'
 import { addNote } from './store/noteSlice'
 import { addTag } from './store/tagSlice'
-import TagsList from './components/TagsList'
+import TagsList from './components/TagList/TagsList'
 
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'

@@ -38,7 +38,7 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     }, [disabled])
 
     return (
-        <li className='list'>
+        <li className='item'>
                 <div className='container-action'>
                     <input placeholder='note'
                         disabled={disabled}
