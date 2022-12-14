@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAppSelector } from '../../hook'
 import { useAppDispatch } from '../../hook'
-import TagItem from '../TagItem'
+import TagItem from '../TagItem/TagItem'
 import { concatTags } from '../../store/tagSlice'
 import { getArrDiffTags } from '../../utils/getArrDifTags'
 import { removeFilter } from '../../store/noteSlice'
