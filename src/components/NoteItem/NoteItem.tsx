@@ -23,7 +23,6 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
     const dispatch = useAppDispatch()
     const [value, setValue] = useState(text)
     const tagRef = useRef(tag)
-
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect( () => {
@@ -37,6 +36,16 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
       }
     }, [disabled])
 
+    const handlerKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        if (inputRef.current) {
+          dispatch(changeNote(id))
+          dispatch(setNewValue({id, value}))
+          tagRef.current = getTagFromString(value)
+        }
+      }
+    }
+
     return (
         <li className='item'>
                 <div className='item__content'>
@@ -46,6 +55,7 @@ const NoteItem: React.FC<NotesItemPropsType> = ({id, text, disabled, tag}) => {
                         onChange={e => setValue(e.target.value)}
                         ref={inputRef}
                         className='input item__content-input'
+                        onKeyDown={handlerKeyDown}
                     />
                     {value && <div className='item__content-container'>
                                 <FontAwesomeIcon
