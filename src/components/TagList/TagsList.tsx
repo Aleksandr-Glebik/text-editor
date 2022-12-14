@@ -20,7 +20,8 @@ const TagsList: React.FC = ()  => {
     }, [tags, notes, dispatch])
 
     return (
-        <div className='tag-list__container'>
+        <>
+          {tags.length > 0 && <div className='tag-list__container'>
             <p className='tag-list__text'>
                 Кликните по тегу для фильтрации списка заметок
             </p>
@@ -38,8 +39,8 @@ const TagsList: React.FC = ()  => {
             >
                 Отмена фильтра
             </button>
-        </div>
-
+        </div>}
+        </>
     )
 }
 
