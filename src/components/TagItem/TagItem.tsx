@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 library.add(
     faCircleXmark,
 )
-
 interface TagsItemPropsType {
     id: string
     text: string

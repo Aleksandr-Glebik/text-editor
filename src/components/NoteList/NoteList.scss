@@ -5,4 +5,34 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 1rem;
+
+    .ai-enter {
+        opacity: 0;
+        transform: translateX(-20rem);
+    }
+
+    .ai-enter-active {
+        transition: all 400ms ease-in;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .ai-enter-done {
+        transform: translateX(0);
+    }
+
+    .ai-exit {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .ai-exit-active {
+        transition: all 400ms ease-in;
+        opacity: 0;
+        transform: translateX(-20rem);
+    }
+
+    .ai-exit-done{
+        opacity: 0;
+    }
 }
