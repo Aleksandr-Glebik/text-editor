@@ -6,6 +6,8 @@ import { concatTags } from '../../store/tagSlice'
 import { getArrDiffTags } from '../../utils/getArrDifTags'
 import { removeFilter } from '../../store/noteSlice'
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+
 import './tagList.scss'
 
 const TagsList: React.FC = ()  => {
@@ -25,14 +27,21 @@ const TagsList: React.FC = ()  => {
             <p className='tag-list__text'>
                 Кликните по тегу для фильтрации списка заметок
             </p>
-            <ul className='tag-list__list'>
+            <TransitionGroup component={'ul'} className='tag-list__list'>
                 {
                 tags.map( (tag) => (
-                <TagItem key={tag.id}
-                            {...tag}
-                />))
+                        <CSSTransition
+                          classNames={'at'}
+                          timeout={400}
+                          key={tag.id}
+                          mountOnEnter
+                          unmountOnExit
+                        >
+                            <TagItem  {...tag} />
+                        </CSSTransition> as any
+                ))
                 }
-            </ul>
+            </TransitionGroup>
             <button
                 onClick={e => dispatch(removeFilter())}
                 className='btn cancel-btn'

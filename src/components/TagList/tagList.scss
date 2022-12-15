@@ -30,6 +30,37 @@
         justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
+
+            .at-enter {
+                opacity: 0;
+                transform: translateX(6rem);
+            }
+
+            .at-enter-active {
+                transition: all 400ms ease-in;
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .at-enter-done {
+                transform: translateX(0);
+            }
+
+            .at-exit {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .at-exit-active {
+                transition: all 400ms ease-in;
+                opacity: 0;
+                transform: translateX(6rem);
+            }
+
+            .at-exit-done{
+                opacity: 0;
+            }
+
     }
 
     .cancel-btn {
